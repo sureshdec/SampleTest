@@ -7,7 +7,7 @@ public class KeyboardReader
  public static void main (String[] args) throws java.io.IOException
  {
 
-  String s1;
+  
   String s2;
 
   double num1, num2, product;
