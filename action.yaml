@@ -14,5 +14,8 @@ runs:
   steps:
     - uses: actions/checkout@v2
     - id: pokemon_name
-      run: echo "::set-output name=pokemon_name::1888"
+      run: |
+         pokemon_name=2
+         echo $pokemon_name
+         echo "::set-output name=pokemon_name::$pokemon_name"
       shell: bash
