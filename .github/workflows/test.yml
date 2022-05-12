@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Get Pokemon name
-      uses: ./ # Uses an action in the root directory
+      uses: sureshdec/ActionTemplates/.github/actions@main
       id: pokemon
       with:
        pokemon_id: 150
