@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Get Pokemon name
-      uses: sureshdec/ActionTemplates/.github/actions@main
+      uses: sureshdec/ActionTemplates/.github/actions/test@main
       id: pokemon
       with:
        pokemon_id: 150
