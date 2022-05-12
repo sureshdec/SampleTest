@@ -1,0 +1,17 @@
+name: test
+
+on:
+  workflow_dispatch
+
+
+jobs:
+  greeting_job:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Get Pokemon name
+      uses: ./ # Uses an action in the root directory
+      id: pokemon
+      with:
+       pokemon_id: 150
+    - name: Get the pokemon
+      run: echo "${{ steps.pokemon.outputs.pokemon_name }} attack"  
