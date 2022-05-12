@@ -8,6 +8,7 @@ inputs:
 outputs:
   pokemon_name:
     description: 'Name des Pokemons'
+    value: ${{ steps.pokemon_name.outputs.pokemon_name }}
 runs:
   using: "composite"
   steps:
@@ -15,4 +16,7 @@ runs:
     - run: |
        chmod +x ${{ github.action_path }}/test.sh 
        ${{ github.action_path }}/test.sh
+      shell: bash
+    - id: pokemon_name
+      run: echo "::set-output name=pokemon_name::145"
       shell: bash
