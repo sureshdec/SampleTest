@@ -13,10 +13,6 @@ runs:
   using: "composite"
   steps:
     - uses: actions/checkout@v2
-    - run: |
-       chmod +x ${{ github.action_path }}/test.sh 
-       ${{ github.action_path }}/test.sh
-      shell: bash
     - id: pokemon_name
-      run: echo "::set-output name=pokemon_name::145"
+      run: echo "::set-output name=pokemon_name::1888"
       shell: bash
