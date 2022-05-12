@@ -14,4 +14,6 @@ jobs:
       with:
        pokemon_id: 150
     - name: Get the pokemon
-      run: echo "${{ steps.pokemon.outputs.pokemon_name }} attack"  
+      run: |
+        echo "::set-output name=pokemon_name::$pokemon_name"
+        echo "${{ steps.pokemon.outputs.pokemon_name }} attack"  
