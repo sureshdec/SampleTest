@@ -16,5 +16,5 @@ jobs:
        
     - name: SonarQube Scan
       run: |
-       sonar-scanner -v
+       /opt/sonar-scanner -v
 
