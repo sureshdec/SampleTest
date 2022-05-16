@@ -9,7 +9,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: SonarQube Scan
-      uses: ./
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      run: |
+       mkdir /downloads/sonarqube -p
+       cd /downloads/sonarqube
+       wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.2.0.1873-linux.zip
+       unzip sonar-scanner-cli-4.2.0.1873-linux.zip
+       mv sonar-scanner-4.2.0.1873-linux /opt/sonar-scanner
