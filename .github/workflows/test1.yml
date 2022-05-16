@@ -1,10 +1,10 @@
-name: test
+name: sonarqube
 
 on:
   workflow_dispatch
 
 jobs:
-  greeting_job:
+  sonarqube:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
