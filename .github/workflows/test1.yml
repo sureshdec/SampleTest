@@ -13,3 +13,5 @@ jobs:
        wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.2.0.1873-linux.zip
        unzip sonar-scanner-cli-4.2.0.1873-linux.zip
        mv sonar-scanner-4.2.0.1873-linux /opt/sonar-scanner
+       sonar-scanner -v
+       /opt/sonar-scanner Dsonar.host.url=http://testhosta:9000
