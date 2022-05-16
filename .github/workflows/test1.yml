@@ -16,5 +16,6 @@ jobs:
        
     - name: SonarQube Scan
       run: |
-       /opt/sonar-scanner -v
+       /export PATH="$PATH:/opt/sonar-scanner/bin"
+       sonar-scanner -v
 
