@@ -10,9 +10,10 @@ jobs:
    runs-on: [ ubuntu-latest ]
    steps:
    - name: dev step
+     continue-on-error: true
      id: dev
      run: |
-        echo "dev
+        exit 1
    - name: truw step
      if: steps.dev.outcome == 'success'
      run: echo '::set-output name=snowChangeCreated::true'
