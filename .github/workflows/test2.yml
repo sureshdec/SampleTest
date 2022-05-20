@@ -12,7 +12,7 @@ jobs:
    - name: dev step
      id: dev
      run: |
-        echo "dev"
+        echo "dev
    - name: truw step
      if: steps.dev.outcome == 'success'
      run: echo '::set-output name=snowChangeCreated::true'
