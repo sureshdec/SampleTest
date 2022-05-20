@@ -15,12 +15,15 @@ jobs:
         echo "dev"
    - name: truw step
      if: steps.dev.outcome == 'success'
-     run: | 
-        echo '::set-output name=snowChangeCreated::true'
-        echo $snowChangeCreated
-   - name: truw step
+     run: echo '::set-output name=snowChangeCreated::true'
+     id: random-color-generator
+   - name: truw 1
      if: steps.dev.outcome == 'failure'
-     run: | 
-        echo '::set-output name=snowChangeCreated::false'
-        echo $snowChangeCreated
+     run: echo '::set-output name=snowChangeCreated::false'
+     id: random-color-generator1
+     
+   - name: echo
+     run: |
+      ${{ steps.random-color-generator.outputs.snowChangeCreated }}"
+      ${{ steps.random-color-generator1.outputs.snowChangeCreated }}"
     
