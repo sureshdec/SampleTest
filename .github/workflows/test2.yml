@@ -3,21 +3,24 @@ name: test2
 on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-   inputs:
-     env:
-       description: 'devl | prod'
-       required: true
-       default: 'devl'
+
 jobs:
   test2:
    name:  edl-core-grants
    runs-on: [ ubuntu-latest ]
    steps:
    - name: dev step
-     if: ${{ github.event.inputs.env == 'devl' && success() }}
+     id: dev
      run: |
         echo "dev"
-   - name: prod step
-     if: ${{ github.event.inputs.env == 'prod' && github.event.ref == 'refs/heads/dev' }}
+   - name: truw step
+     if: steps.dev.outcome == 'success'
      run: | 
-        echo "prod"
+        echo '::set-output name=snowChangeCreated::true'
+        echo $snowChangeCreated
+   - name: truw step
+     if: steps.dev.outcome == 'failure'
+     run: | 
+        echo '::set-output name=snowChangeCreated::false'
+        echo $snowChangeCreated
+    
