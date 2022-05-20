@@ -24,6 +24,6 @@ jobs:
      
    - name: echo
      run: |
-      ${{ steps.random-color-generator.outputs.snowChangeCreated }}"
-      ${{ steps.random-color-generator1.outputs.snowChangeCreated }}"
+      echo "${{ steps.random-color-generator.outputs.snowChangeCreated }}"
+      echo "${{ steps.random-color-generator1.outputs.snowChangeCreated }}"
     
