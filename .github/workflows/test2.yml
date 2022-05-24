@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 env:
  projectName: suresh
- configItem: aws-ae-databricks-prod.${projectName}
+ configItem: aws-ae-databricks-prod.$projectName
 
 jobs:
   test2:
@@ -17,7 +17,6 @@ jobs:
      id: dev
      run: |
       echo $configItem
-      echo $date_2
         exit 1
    - name: Get date name
      id: date
