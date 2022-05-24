@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 env:
  projectName: suresh
- configItem: aws-ae-databricks-prod.$projectName
+ configItem: aws-ae-databricks-prod.${{ projectName }}
 
 jobs:
   test2:
