@@ -17,12 +17,12 @@ jobs:
      run: |
       echo $date_1
         exit 1
-        
-   - name: Set env
+   - name: Get date name
+     id: date
+     run: echo "::set-output name=date::$(date)"
+   - name: print
      run: |
-       date_1=$(date)
-   - name: Test
-     run: echo $date_1
+       echo ${{ steps.date.outputs.date }}
    - name: truw step
      if: steps.dev.outcome == 'success'
      run: echo '::set-output name=snowChangeCreated::true'
