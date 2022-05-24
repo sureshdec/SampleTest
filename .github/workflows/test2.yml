@@ -17,6 +17,12 @@ jobs:
      run: |
       echo $date_1
         exit 1
+        
+   - name: Set env
+     run: |
+       date_1=$(date)
+   - name: Test
+     run: echo $date_1
    - name: truw step
      if: steps.dev.outcome == 'success'
      run: echo '::set-output name=snowChangeCreated::true'
