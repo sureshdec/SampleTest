@@ -20,7 +20,7 @@ jobs:
        ${{ github.event.ref == 'refs/heads/master' || github.event.ref == 'refs/heads/development' || github.event.ref == 'refs/heads/optimize' }}
      run: |
        echo "devl"
-    - name: prod
-      if: ${{ github.event.inputs.env == 'prod' && github.event.ref == 'refs/heads/master' }}
+   - name: prod
+     if: ${{ github.event.inputs.env == 'prod' && github.event.ref == 'refs/heads/master' }}
      run: |
        echo "prod"
