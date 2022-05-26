@@ -15,9 +15,8 @@ jobs:
    steps:
    - uses: actions/checkout@v2
    - name: devl
-     if: |
-       github.event.inputs.env == 'devl' &&
-       ${{ github.event.ref == 'refs/heads/master' || github.event.ref == 'refs/heads/development' || github.event.ref == 'refs/heads/optimize' }}
+     if: ${{ github.event.inputs.env == 'devl' &&
+       (github.event.ref == 'refs/heads/master' || github.event.ref == 'refs/heads/development' || github.event.ref == 'refs/heads/optimize') }}
      run: |
        echo "devl"
    - name: prod
