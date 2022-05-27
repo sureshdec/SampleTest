@@ -14,6 +14,12 @@ jobs:
    runs-on: [ ubuntu-latest ]
    steps:
    - uses: actions/checkout@v2
+   - name: Get Current Date - Staging Script.
+     id: date
+     run: echo "::set-output name=date::$(date +%s)"
+   - name: print
+     run: |
+       echo ${{ steps.date.outputs.date }}
    - name: devl
      if: ${{ github.event.inputs.env == 'devl' &&
        (github.event.ref == 'refs/heads/dev' || github.event.ref == 'refs/heads/development' || github.event.ref == 'refs/heads/optimize') }}
