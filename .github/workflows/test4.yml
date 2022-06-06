@@ -18,6 +18,9 @@ jobs:
    runs-on: [ ubuntu-latest ]
    steps:
     - uses: actions/checkout@v2 
+    - name: assume role
+      run: |
+       echo "devl assume"
     - name: Publish devl grant tasks package
       if: ${{ success() }}
       run: |
@@ -34,6 +37,10 @@ jobs:
       if: ${{ always() }}
       run: |
         echo "devl"
+    - name: assume role
+      if: ${{ github.event.ref == 'refs/heads/dev' }}
+      run: |
+       echo "prod assume"
     - name: Publish prod grant tasks package
       if: ${{ github.event.ref == 'refs/heads/dev' }}
       run: |
