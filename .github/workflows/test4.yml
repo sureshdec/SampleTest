@@ -1,0 +1,49 @@
+name: test4
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ dev ]
+  pull_request:
+    branches: [ dev ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+  
+jobs:
+  test4:
+   name:  test4
+   runs-on: [ prod-linux-edl ]
+   timeout-minutes: 5
+   steps:
+    - uses: actions/checkout@v2 
+    - name: Publish devl grant tasks package
+      if: ${{ success() }}
+      run: |
+       echo "devl"
+    - name: Publish devl grants notebooks
+      if: ${{ success() }}
+      run: |
+        echo "devl"
+    - name: Create dev cron job
+      if: ${{ success() }}
+      run: |
+       echo "devl"
+    - name: clean up aws credentials
+      if: ${{ always() }}
+      run: |
+        echo "devl"
+    - name: Publish prod grant tasks package
+      if: ${{ github.event.ref == 'refs/heads/dev' }}
+      run: |
+        echo "prod"
+    - name: Publish prod grants notebooks'
+      if: ${{ github.event.ref == 'refs/heads/dev' && success() }}
+      run: |
+          echo "prod"
+    - name: Create prod cron job
+      if: ${{ github.event.ref == 'refs/heads/dev' && success() }}
+      run : |
+              echo "prod"
