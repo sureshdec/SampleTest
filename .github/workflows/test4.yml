@@ -15,8 +15,7 @@ on:
 jobs:
   test4:
    name:  test4
-   runs-on: [ prod-linux-edl ]
-   timeout-minutes: 5
+   runs-on: [ ubuntu-latest ]
    steps:
     - uses: actions/checkout@v2 
     - name: Publish devl grant tasks package
