@@ -7,16 +7,17 @@ jobs:
     name: build
     runs-on: ubuntu-latest
     steps:
-      - name: Build
-        run: echo building
-  deploy:
-    name: deploy
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - uses: trstringer/manual-approval@v1
-        with:
+     - name: dev approval
+       uses: trstringer/manual-approval@v1
+       with:
           secret: ${{ github.TOKEN }}
           approvers: sureshdec
-      - name: Deploy to production
-        run: echo deploying
+     - name: Build
+       run: echo building
+     - name: prod approval
+       uses: trstringer/manual-approval@v1
+       with:
+          secret: ${{ github.TOKEN }}
+          approvers: sureshdec
+     - name: Deploy to production
+       run: echo deploying
