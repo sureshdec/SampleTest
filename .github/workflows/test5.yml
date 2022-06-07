@@ -1,4 +1,4 @@
-name: main
+name: suresh-approab
 on:
   workflow_dispatch:
 
@@ -16,7 +16,6 @@ jobs:
     steps:
       - uses: trstringer/manual-approval@v1
         with:
-          secret: ${{ github.TOKEN }}
-          approvers: trstringer,acdunnigan
+          approvers: sureshdec
       - name: Deploy to production
         run: echo deploying
