@@ -23,14 +23,15 @@ jobs:
       - uses: actions/checkout@v3
 
       # Runs a single command using the runners shell
+      - name: testing1111
+        if: ${{ matrix.currentEnvName != 'devl' or  matrix.currentEnvName != 'prod' }}
+        run: |
+         echo "build" 
       - name: testing
         run: |
            echo ${{ matrix.currentEnvName }}
            chmod 755 ./test2.sh
            ./test2.sh ${{ matrix.currentEnvName }} deer
-      - name: testing1111
-        run: |
-         echo "build" 
       - name: Run a one-line script
         if: ${{ matrix.currentEnvName == 'prod' }}
         run: |
