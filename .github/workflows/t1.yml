@@ -19,6 +19,6 @@ jobs:
     - name: Set Token
       run: |
        echo "token"
-   - name: Build and Integration Test
-     run: |
+    - name: Build and Integration Test
+      run: |
         echo ${{ github.event.inputs.CONFIG }}
