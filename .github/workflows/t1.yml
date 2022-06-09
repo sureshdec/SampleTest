@@ -1,0 +1,24 @@
+name: edl-workflow-regression
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+   inputs:
+      ENVIRONMENT:
+        description: 'ENVIRONMENT'
+        required: true
+        default: 'devl'
+      CONFIG:
+        description: 'CONFIG'
+        required: true
+        default: 'Config'
+jobs:
+  edl-workflow-regression:
+   runs-on: [ ubuntu-latest ]
+   steps:
+    - uses: actions/checkout@v2
+    - name: Set Token
+      run: |
+       echo "token"
+   - name: Build and Integration Test
+     run: |
+        echo ${{ github.event.inputs.CONFIG }}
