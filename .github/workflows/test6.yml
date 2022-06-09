@@ -24,7 +24,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: testing1111
-        if: ${{ matrix.currentEnvName != 'devl' or  matrix.currentEnvName != 'prod' }}
+        if: ${{ matrix.currentEnvName != 'devl' || matrix.currentEnvName != 'prod' }}
         run: |
          echo "build" 
       - name: testing
