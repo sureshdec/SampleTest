@@ -28,7 +28,9 @@ jobs:
            echo ${{ matrix.currentEnvName }}
            chmod 755 ./test2.sh
            ./test2.sh ${{ matrix.currentEnvName }} deer
-           
+      - name: testing1111
+        run: |
+         echo "build" 
       - name: Run a one-line script
         if: ${{ matrix.currentEnvName == 'prod' }}
         run: |
