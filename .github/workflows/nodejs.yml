@@ -1,0 +1,15 @@
+name: test6
+
+# Controls when the workflow will run
+on:
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  reusable_workflow_job:
+        uses: sureshdec/ActionTemaplate/.github/actions/nodesetup@main
+        with:
+          node-version: '12.22.1'
