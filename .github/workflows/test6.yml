@@ -10,35 +10,12 @@ env:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-   strategy:
-    max-parallel: 1
-    matrix:
-     currentEnvName: [devl, prod]
-    # The type of runner that the job will run on
-   runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-   steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+  reusable_workflow_job:
+    runs-on: ubuntu-latest
+    steps:
       - uses: sureshdec/ActionTemaplate/.github/workflows/test.yml@master
-      - uses: actions/checkout@v3
-      # Runs a single command using the runners shell
-      - name: testing1111
-        if: ${{ matrix.currentEnvName  == 'devl' }}
-        run: |
-         echo "build" 
-      - name: testing ${{ matrix.currentEnvName }}
-        run: |
-           echo ${{ matrix.currentEnvName }}
-           chmod 755 ./test2.sh
-           ./test2.sh ${{ matrix.currentEnvName }} deer
-      - name: Run a one-line script
-        if: ${{ matrix.currentEnvName == 'prod' }}
-        run: |
-         chmod 755 ./test2.sh
-         ./test2.sh ${{ matrix.currentEnvName }} deer
-          ./test2.sh ${{ matrix.currentEnvName }} deer1
+        with:
+          ENVIRONMENT: devl
+
          
          
