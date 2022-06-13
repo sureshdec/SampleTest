@@ -10,4 +10,4 @@ jobs:
     - name: nodejs
       uses: sureshdec/ActionTemaplate/.github/actions/nodesetup@main
       with:
-        node-version: '12.22.1'
+        node-version: 12.22.1
