@@ -11,9 +11,7 @@ env:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   reusable_workflow_job:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: sureshdec/ActionTemaplate/.github/workflows/test.yml@master
+        uses: sureshdec/ActionTemaplate/.github/workflows/test.yml@master
         with:
           ENVIRONMENT: devl
 
