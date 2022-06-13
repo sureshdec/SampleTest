@@ -11,3 +11,5 @@ jobs:
       uses: sureshdec/ActionTemaplate/.github/actions/nodesetup@main
       with:
        nodeversion: '12.22.1'
+    - name: print
+      run: node -v
