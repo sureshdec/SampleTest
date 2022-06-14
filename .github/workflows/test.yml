@@ -2,21 +2,22 @@ name: branch_test
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
+  # Triggers the workflow on push for any branch or pull request events but only for the master branch
   push:
      branches:
       - "*"
+  pull_request:
+    branches: [ "master" ]
 
 jobs:
   greeting_job:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Get Pokemon name
-      uses: ./
-      id: pokemon
-      with:
-       pokemon_id: 150
-    - name: Get the pokemon
+    - name: devl deploy
+      run:
+       echo "devl"
+    - name: prod deploy
+      if: ${{ github.event.ref == 'refs/heads/master' }}
       run: |
-        echo "${{ steps.pokemon.outputs.pokemon_name }} attack"  
+        echo "prod" 
