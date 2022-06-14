@@ -14,12 +14,30 @@ on:
 
   
 jobs:
+  build:
+   name: build
+   runs-on: ubuntu-latest
+   steps:
+   - uses: actions/checkout@v2
+   - run: mkdir -p target/scala-2.12
+   - run: echo hello > target/scala-2.12/world.txt
+   - uses: actions/upload-artifact@v3
+     with:
+      name: my-artifact
+      path: target/scala-2.12/world.txt
+   - run: ls -lrt
   devl:
    name: devl deploy
    runs-on: ubuntu-latest
    steps:
     - name: checkout 
       uses: actions/checkout@v2 
+    - name: Download artifact
+      if: ${{ success() }}
+      uses: actions/download-artifact@v3
+      with:
+        name: my-artifact
+    - run: ls -lrt
     - name: dev deploy
       run: |
         echo "devl"
