@@ -23,8 +23,8 @@ jobs:
    - run: echo hello > target/scala-2.12/world.txt
    - uses: sureshdec/ActionTemaplate/.github/actions/UploadArtifact@main
      with:
-      artifactName: my-artifact
-      artifactpath: target/scala-2.12/world.txt
+      name: my-artifact
+      path: target/scala-2.12/world.txt
    - run: ls -lrt target/scala-2.12/
   devl:
    name: devl deploy
@@ -37,8 +37,8 @@ jobs:
       if: ${{ success() }}
       uses: sureshdec/ActionTemaplate/.github/actions/DownloadArtifact@main
       with:
-        artifactName: my-artifact
-        artifactpath: target/scala-2.12
+        name: my-artifact
+        path: target/scala-2.12
     - run: ls -lrt 
     - run: ls -lrt target/scala-2.12/
     - name: dev deploy
