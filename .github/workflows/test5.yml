@@ -18,8 +18,10 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev
     steps:
-      - name: Deploy
-        run: echo I am deploying! 
+    - uses: trstringer/manual-approval@v1
+      with:
+       secret: ${{ github.TOKEN }}
+       approvers: sureshdec
 
   DeployStaging:
     name: Deploy to Staging 
