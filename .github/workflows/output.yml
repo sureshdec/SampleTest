@@ -12,4 +12,4 @@ jobs:
       uses: sureshdec/ActionTemaplate/.github/actions/output@main
       with:
        pokemon_id: 5
-    - run: run: echo "${{ steps.pokemon.outputs.pokemon_name }} attack"
+    - run: echo "${{ steps.pokemon.outputs.pokemon_name }} attack"
