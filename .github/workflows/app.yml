@@ -27,7 +27,7 @@ jobs:
 
   Deployprod:
     name: Deploy to prod
-    if: ${{github.event.ref == 'refs/heads/main}}
+    if: ${{ github.event.ref == 'refs/heads/main' }}
     needs: [Build,DeployDev]
     runs-on: ubuntu-latest
   
