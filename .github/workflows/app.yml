@@ -1,4 +1,4 @@
-name: app1
+name: app2
 
 on:
   push:
