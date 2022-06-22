@@ -6,7 +6,8 @@ on:
   pull_request:
     branches: [ main ]
   workflow_dispatch:
-
+env:
+   test: suresh
 jobs:
   Build:
     runs-on: ubuntu-latest
@@ -15,6 +16,7 @@ jobs:
 
       - name: Compile
         run: |
+          echo $test
           echo $environment
           echo Hello, world!
         
@@ -26,7 +28,9 @@ jobs:
     environment: dev
     steps:
       - name: Deploy
-        run: echo I am deploying! 
+        run: |
+          echo $test
+          echo I am deploying! 
 
   Deployprod:
     name: Deploy to prod
