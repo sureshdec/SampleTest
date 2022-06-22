@@ -6,6 +6,11 @@ on:
   pull_request:
     branches: [ main ]
   workflow_dispatch:
+    inputs:
+      environment:
+        description: 'devl'
+        required: true
+        default: 'devl'
 env:
    test: suresh
 jobs:
@@ -23,9 +28,9 @@ jobs:
 
   DeployDev:
     name: Deploy to Dev 
+    if: ${{ github.event.ref == 'refs/heads/master' || github.event.inputs.environment  == 'devl' }}
     needs: [Build]
     runs-on: ubuntu-latest
-    environment: dev
     steps:
       - name: Deploy
         run: |
