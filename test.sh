@@ -1,4 +1,4 @@
 #!/bin/bash
-echo $assignment-group
-echo $change-description
-echo $configuration-item
+echo $assignmentgroup
+echo $changedescription
+echo $configurationitem
