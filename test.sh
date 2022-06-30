@@ -1,3 +1,4 @@
 #!/bin/bash
-echo $BUILD_VERSION
-echo $timestamp
+echo $assignment-group
+echo $change-description
+echo $configuration-item
