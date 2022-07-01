@@ -7,6 +7,12 @@ on:
   pull_request_target:
     branches: [master]
     types: [closed] 
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'devl'
+        required: true
+        default: 'devl'
 jobs:
   build:
     runs-on:  ubuntu-latest 
