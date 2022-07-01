@@ -1,18 +1,28 @@
 name: test pull request
 on:
   push:
-    branches: [ master ]
+    branches: [ '*' ]
   pull_request:
     branches: [ master ]
-
+  pull_request_target:
+    branches: [master]
+    types: [closed] 
 jobs:
-  if_merged:
-    if: ${{ github.event.ref == 'refs/heads/master' }}
+  build:
+    runs-on:  ubuntu-latest 
+    steps:
+    - run: echo "build" 
+  devl:
+    runs-on:  ubuntu-latest 
+    if: ${{ (github.event.ref == 'refs/heads/master' || github.event.inputs.environment  == 'devl') }}
+    steps:
+    - run: echo "devl deployment"
+  prod:
+    if: github.event.pull_request.merged == true
     runs-on:  ubuntu-latest 
     steps:
     - name: checkout
       run: echo checkout
     - name: "get pr url"  
-      if: github.event.pull_request.merged == true
       run: |
         echo ${{ github.event.pull_request.url }}
