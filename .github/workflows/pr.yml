@@ -1,0 +1,13 @@
+name: test pull request
+on:
+  pull_request_target:
+    types:
+      - closed
+
+jobs:
+  if_merged:
+    if: github.event.pull_request.merged == true
+    runs-on:  deere-ubuntu-latest 
+    steps:
+    - run: |
+        echo ${{ github.event.pull_request.url }}
