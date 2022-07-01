@@ -1,0 +1,43 @@
+name: test pull request
+on:
+  push: 
+    branches: 
+      - '!master'
+      - '**' 
+  pull_request:
+    types: [closed, opened]
+    branches: main
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'devl'
+        required: true
+        default: 'devl'
+jobs:
+ BuildAndTest:
+   runs-on: ubuntu-latest 
+   steps:
+    - uses: actions/checkout@v2
+    - name: Build Deployment
+      run: |
+        echo "Am from Build"
+ DevDeploy:
+   runs-on: ubuntu-latest 
+   if: ${{ github.event.pull_request.merged == true ||  github.event.inputs.environment  == 'devl' }}
+   needs: [BuildAndTest]
+   steps:
+    - uses: actions/checkout@v2
+    - name: Build Deployment
+      run: |
+        echo "Am from Build"
+ ProdDeploy:
+    if: github.event.pull_request.merged == true
+    runs-on:  ubuntu-latest 
+    needs: [BuildAndTest,DevDeploy]
+    steps:
+    - name: checkout
+      run: echo checkout
+    - name: "get pr url"
+      run: |
+        echo ${{ github.event.pull_request.url }}
+        #comments
