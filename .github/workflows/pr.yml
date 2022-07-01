@@ -4,17 +4,15 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-  pull_request_target:
-    types:
-      - closed
 
 jobs:
   if_merged:
-    if: ${{ github.event.ref == 'refs/heads/master' || github.event.pull_request.merged == true }}
+    if: ${{ github.event.ref == 'refs/heads/master' }}
     runs-on:  ubuntu-latest 
     steps:
     - name: checkout
       run: echo checkout
-    - name: "get pr url"     
+    - name: "get pr url"  
+      if: github.event.pull_request.merged == true
       run: |
         echo ${{ github.event.pull_request.url }}
