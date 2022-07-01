@@ -1,6 +1,7 @@
 name: test pull request
-#suresh
 on:
+  push:
+    branches: [ '*' ]
   pull_request_target:
     types:
       - closed
