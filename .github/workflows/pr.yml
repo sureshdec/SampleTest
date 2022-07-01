@@ -11,7 +11,7 @@ on:
 
 jobs:
   if_merged:
-    if: ${{ github.event.ref == 'refs/heads/master' && github.event.pull_request.merged == true }}
+    if: ${{ github.event.ref == 'refs/heads/master' || github.event.pull_request.merged == true }}
     runs-on:  ubuntu-latest 
     steps:
     - name: checkout
