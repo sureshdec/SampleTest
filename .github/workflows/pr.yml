@@ -11,12 +11,11 @@ on:
 
 jobs:
   if_merged:
-    if: ${{ github.event.ref == 'refs/heads/master' }}
+    if: ${{ github.event.ref == 'refs/heads/master' && github.event.pull_request.merged == true }}
     runs-on:  ubuntu-latest 
     steps:
     - name: checkout
       run: echo checkout
-    - name: "get pr url"
-      if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
+    - name: "get pr url"     
       run: |
         echo ${{ github.event.pull_request.url }}
