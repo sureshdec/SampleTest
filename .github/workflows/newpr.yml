@@ -20,7 +20,7 @@ jobs:
         echo BuildTest
  DevDeploy:
    runs-on: ubuntu-latest 
-   if: ${{ (github.event.ref == 'refs/heads/dev' || github.event.inputs.environment == 'devl') }}
+   if: ${{ (github.event.ref == 'refs/heads/master' || github.event.inputs.environment == 'devl') }}
    needs: [BuildAndTest]
    steps:
     - uses: actions/checkout@v2
