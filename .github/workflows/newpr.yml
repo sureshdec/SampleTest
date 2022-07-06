@@ -39,7 +39,6 @@ jobs:
       run: echo "::set-output name=commitId::$(git log -n 1 --pretty=format:'%h')"
     - run: echo ${{ steps.commitId.outputs.commitId }}
     - run: |
-       #echo ${{github_server_url}}
        echo ${{github.repository}}
        echo ${{steps.commitId.outputs.commitId}}
-    #sures
+
