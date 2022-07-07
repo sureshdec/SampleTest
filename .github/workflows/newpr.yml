@@ -31,6 +31,7 @@ jobs:
     - name: Build Deployment
       run: |
         echo Devl Deployment 
+        echo ${{ github.event.pusher.name }}
  ProdDeploy:
     if: ${{ github.event.ref == 'refs/heads/master' }}
     runs-on: ubuntu-latest 
