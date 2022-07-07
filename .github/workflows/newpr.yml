@@ -11,7 +11,7 @@ on:
         required: true
         default: 'devl'
 env:
- commitid: ${{ GITHUB_SHA }}
+ commitid: ${{ github_sha }}
 jobs:
  BuildAndTest:
    runs-on: ubuntu-latest 
