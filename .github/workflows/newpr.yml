@@ -10,6 +10,8 @@ on:
         description: 'devl'
         required: true
         default: 'devl'
+env:
+ commitid: ${{ GITHUB_SHA }}
 jobs:
  BuildAndTest:
    runs-on: ubuntu-latest 
