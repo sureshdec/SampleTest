@@ -22,6 +22,7 @@ jobs:
     - run: |
         echo $GITHUB_SHA
         echo $GITHUB_SERVER_URL
+        echo ${{ github.event.pusher.name }}
  DevDeploy:
    runs-on: ubuntu-latest 
    if: ${{ (github.event.ref == 'refs/heads/master' || github.event.inputs.environment == 'devl') }}
