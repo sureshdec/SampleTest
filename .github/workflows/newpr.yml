@@ -18,6 +18,7 @@ jobs:
     - name: Build Deployment
       run: |
         echo BuildTest
+    - run: echo ${{ env.GITHUB_SHA }}
  DevDeploy:
    runs-on: ubuntu-latest 
    if: ${{ (github.event.ref == 'refs/heads/master' || github.event.inputs.environment == 'devl') }}
