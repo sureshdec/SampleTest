@@ -10,8 +10,7 @@ on:
         description: 'devl'
         required: true
         default: 'devl'
-env:
- commitid: ${{ github_sha }}
+
 jobs:
  BuildAndTest:
    runs-on: ubuntu-latest 
@@ -20,7 +19,7 @@ jobs:
     - name: Build Deployment
       run: |
         echo BuildTest
-    - run: echo ${{ env.GITHUB_SHA }}
+    - run: echo ${{ github_sha }}
  DevDeploy:
    runs-on: ubuntu-latest 
    if: ${{ (github.event.ref == 'refs/heads/master' || github.event.inputs.environment == 'devl') }}
