@@ -7,12 +7,13 @@ jobs:
    runs-on: ubuntu-latest 
    steps:
     - uses: actions/checkout@v2 
-    - name: Verify Dockerfile changed
-      uses: tj-actions/verify-changed-files@v5.5
-      id: changed_files
+    - name: Verify Changed files
+      uses: tj-actions/verify-changed-files@v10
+      id: verify-changed-files
       with:
-          files: |
-             README.md
-    - name: Display changed files
-      if: steps.changed_files.outputs.files_changed == 'true'
-      run: echo "changed"
+        files: |
+            README.md
+    - name: Run step only when files change.
+      if: steps.verify-changed-files.outputs.files_changed == 'true'
+      run: |
+          echo "Changed files: ${{ steps.verify-changed-files.outputs.changed_files }}"
