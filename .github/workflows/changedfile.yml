@@ -6,14 +6,25 @@ jobs:
  BuildAndTest:
    runs-on: ubuntu-latest 
    steps:
-    - uses: actions/checkout@v2 
-    - name: Verify Dockerfile changed
-      uses: tj-actions/verify-changed-files@v5.5
-      id: changed_files
-      with:
-        files: |
-          README.md
-    - name: Display changed files
-      if: steps.changed_files.outputs.files_changed == 'true'
-      run: echo ${{ steps.changed_files.outputs.files_changed }}"
 
+      - uses: actions/checkout@v3
+      - name: Get specific changed files
+        id: changed-files-specific
+        uses: tj-actions/changed-files@v23.1
+        with:
+          files: |
+            my-file.txt
+            test.txt
+            new.txt
+            test_directory
+            *.sh
+            *.png
+            *.md
+            *.jpeg
+            **/migrate-*.sql
+          files_ignore: |
+            *.yml
+      - name: Run step if any of the listed files above change
+        if: steps.changed-files-specific.outputs.any_changed == 'true'
+        run: |
+          echo "One or more files listed above has changed."
