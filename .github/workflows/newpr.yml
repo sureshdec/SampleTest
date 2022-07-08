@@ -10,6 +10,11 @@ on:
         description: 'devl'
         required: true
         default: 'devl'
+env:
+ assignmentGroup: 'AE EDL Catalog Support'
+ assignedTo: '${{github.event.pusher.name}}'
+ changeDescription: 'See Latest Commit https://github.deere.com/${{github.repository}}/commit/${{ env.GITHUB_SHA }}'
+ configurationItem: 'aws-ae-databricks-prod.edl-databricks-sql-logs-job'
 
 jobs:
  BuildAndTest:
@@ -20,6 +25,11 @@ jobs:
       run: |
         echo BuildTest
     - run: |
+        echo "GITHUB_SHA=$GITHUB_SHA" >> $GITHUB_ENV
+        echo $assignmentGroup
+        echo $assignedTo
+        echo $changeDescription
+        echo $configurationItem
         echo $GITHUB_SHA
         echo $GITHUB_SERVER_URL
         echo ${{ github.event.pusher.name }}
