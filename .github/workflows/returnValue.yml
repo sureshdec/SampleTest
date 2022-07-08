@@ -9,8 +9,8 @@ jobs:
    steps:
     - uses: actions/checkout@v2
     - name: node setup
-      id: create_change_request
+      id: pokemon
       uses: sureshdec/ActionTemaplate/.github/actions/output@main
       with:
-        pokemon_id: 5
-    - run: echo ${{ steps.create_change_request.outputs.pokemon_name }} 
+        pokemon_id: 5ddfs
+    - run: echo "${{ steps.pokemon.outputs.pokemon_name }} attack"
