@@ -1,4 +1,4 @@
-   name: test pull request
+name: test pull request
 on:
   push:
     branches: [ '*' ]  
@@ -7,12 +7,12 @@ jobs:
    runs-on: ubuntu-latest 
    steps:
     - uses: actions/checkout@v2 
-   - name: Verify Dockerfile changed
-        uses: tj-actions/verify-changed-files@v5.5
-        id: changed_files
-        with:
+    - name: Verify Dockerfile changed
+      uses: tj-actions/verify-changed-files@v5.5
+      id: changed_files
+      with:
           files: |
              README.md
-      - name: Display changed files
-        if: steps.changed_files.outputs.files_changed == 'true'
-        run: echo "changed"
+    - name: Display changed files
+      if: steps.changed_files.outputs.files_changed == 'true'
+      run: echo "changed"
