@@ -1,0 +1,15 @@
+name: ReturnValue
+on:
+  push:
+    branches: [ '*' ]
+jobs:
+ BuildAndTest:
+   runs-on: ubuntu-latest 
+   steps:
+    - uses: actions/checkout@v2
+    - name: node setup
+      id: create_change_request
+      uses: sureshdec/SampleTest/.github/actions/output@master
+      with:
+        pokemon_id: 5
+    - run: echo ${{ steps.create_change_request.outputs.pokemon_name }}
