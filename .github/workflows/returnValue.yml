@@ -1,5 +1,4 @@
 name: ReturnValue
-#completed
 on:
   push:
     branches: [ '*' ]
