@@ -13,5 +13,5 @@ jobs:
       with:
         pokemon_id: 5ddfs
     - run: |
-          echo $pokemon_name
+          echo ${{ env.pokemon_name1 }}
           echo "${{ steps.pokemon.outputs.pokemon_name }} attack"
