@@ -10,7 +10,7 @@ jobs:
       max-parallel: 1
       matrix:
        include:
-          - { region: us-east-1, currentEnvName: devl , lambda: edl-delta-request-handler-lambda, s3Bucket: jd-us01-commoninformationservices-devl-system, fileName: infrastructure/cloudformation_templates/infrastructure-stack.j2, stackName: edl-files-loader-infra }
+          - { region: us-east-1, currentEnvName: devl , lambda: edl-delta-request-handler, s3Bucket: jd-us01-commoninformationservices-devl-system, fileName: infrastructure/cloudformation_templates/infrastructure-stack.j2, stackName: edl-files-loader-infra }
           - { region: us-east-1, currentEnvName: devl , lambda: edl-file-ingest-completion-lambda, s3Bucket: jd-us01-commoninformationservices-devl-system, fileName: infrastructure/cloudformation_templates/api-stack.j2, stackName: edl-files-loader-app }
  
     steps:
