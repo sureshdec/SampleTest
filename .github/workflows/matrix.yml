@@ -6,30 +6,12 @@ on:
 jobs:
   greeting_job:
     runs-on: ubuntu-latest
-    strategy:
-      max-parallel: 1
-      matrix:
-       stackName: [edl-files-loader-infra,edl-files-loader-app]
-       region: [ us-east-1 ]
-       s3Bucket: [ jd-us01-commoninformationservices-devl-system ]
-       currentEnvName: [ devl ]
-       fileName: [ infrastructure/cloudformation_templates/infrastructure-stack.j2 ,infrastructure/cloudformation_templates/api-stack.j2 ]
-       lambda: [ edl-delta-request-handler-lambda, edl-file-ingest-completion-lambda ]
-       include: 
-       - stackName: edl-files-loader-infra
-         lambda: edl-delta-request-handler-lambda
-       - stackName: edl-files-loader-infra
-         lambda: edl-file-ingest-completion-lambda 
-       
-        
+    
     steps:
-    - name: Deploy and Test - ${{ matrix.stackName }}"
-      run: |
-
-         echo ${{ matrix.config.stackName}}
+    - id: set-matrix
+      run: echo "::set-output name=matrix::{\"FOO\":["abc"],\"BAR\":["xyz"]}"
          
          
     - name: print1
-      if: contains(matrix.lambda, 'lambda')
       run: |
-         echo ${{ matrix.lambda}}
+         echo ${{ steps.set-matrix.outputs.matrix }}
