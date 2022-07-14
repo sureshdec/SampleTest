@@ -9,9 +9,12 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-        cfg: 
+       include:
           - { region: us-east-1, currentEnvName: devl , s3Bucket: jd-us01-commoninformationservices-devl-system, fileName: infrastructure/cloudformation_templates/infrastructure-stack.j2, stackName:  edl-files-loader-infra }
-          - { region: us-east-1, currentEnvName: devl , lambda: [edl-file-ingest-completion-lambda,edl-file-ingest-request-lambda] , s3Bucket: jd-us01-commoninformationservices-devl-system, fileName: infrastructure/cloudformation_templates/eapi-stack.j2, stackName: edl-files-loader-app}
+          - { region: us-east-1, currentEnvName: devl , s3Bucket: jd-us01-commoninformationservices-devl-system, fileName: infrastructure/cloudformation_templates/eapi-stack.j2, stackName: edl-files-loader-app}
+       lambda: 
+        - edl-delta-request-handler-lambda
+        - edl-file-ingest-completion-lambda
     steps:
     - name: Deploy and Test - ${{  matrix.currentEnvName }} - ${{ matrix.stackName }}"
       run: |
