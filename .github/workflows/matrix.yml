@@ -9,7 +9,7 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-       include:
+        config:
         - stackName: edl-delta-loader-infra
           region: us-east-1
           currentEnvName: devl
@@ -20,7 +20,8 @@ jobs:
           currentEnvName: devl
           s3Bucket: jd-us01-commoninformationservices-devl-system
           fileName: infrastructure/cloudformation_templates/application-stack.j2
-          lambda: lambda:edl-delta-request-handler-lambda
+        lambdas: [edl-file-ingest-completion-lambda , edl-delta-request-handler-lambda ]
+
     steps:
     - name: Deploy and Test - ${{  matrix.currentEnvName }} - ${{ matrix.stackName }}"
       run: |
