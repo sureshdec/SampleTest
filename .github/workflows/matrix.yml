@@ -15,7 +15,7 @@ jobs:
        currentEnvName: [ devl ]
        fileName: [ infrastructure/cloudformation_templates/infrastructure-stack.j2 ,infrastructure/cloudformation_templates/api-stack.j2 ]
        lambda: [ edl-delta-request-handler-lambda, edl-file-ingest-completion-lambda ]
-       exclude: 
+       include: 
        - stackName: edl-files-loader-infra
          lambda: edl-delta-request-handler-lambda
        - stackName: edl-files-loader-infra
