@@ -9,7 +9,11 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-       stackName: [edl-files-loader-infra,edl-files-loader-app]    
+       stackName: [edl-files-loader-infra,edl-files-loader-app]
+       region: [ us-east-1 ]
+       s3Bucket: [ jd-us01-commoninformationservices-devl-system ]
+       currentEnvName: [ devl ]
+       fileName: [ infrastructure/cloudformation_templates/infrastructure-stack.j2 ,infrastructure/cloudformation_templates/api-stack.j2 ]
        lambda: [ edl-delta-request-handler-lambda, edl-file-ingest-completion-lambda ]
        exclude: 
        - stackName: edl-files-loader-infra
