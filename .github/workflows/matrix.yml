@@ -9,13 +9,12 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-       config: 
-        - { region: us-east-1, currentEnvName: devl , s3Bucket: jd-us01-commoninformationservices-devl-system, fileName: infrastructure/cloudformation_templates/infrastructure-stack.j2, stackName: edl-files-loader-infra }
-       lambda: 
-             - edl-delta-request-handler-lambda
-             - edl-file-ingest-completion-lambda
+       devl: [us-east-1,devl,jd-us01-commoninformationservices-devl-system,infrastructure/cloudformation_templates/infrastructure-stack.j2 , edl-files-loader-infra ]
+       include:
+        - devl: edl-files-loader-infra 
+          lambda: edl-delta-request-handler-lambda 
     steps:
-    - name: Deploy and Test - ${{  matrix.config }} - ${{ matrix.config }}"
+    - name: Deploy and Test - ${{  matrix.devl }} - ${{ matrix.devl}}"
       run: |
          echo ${{ matrix.region}}
          echo ${{ matrix.currentEnvName}}
