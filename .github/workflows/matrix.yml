@@ -15,7 +15,7 @@ jobs:
     steps:
     - name: print
       run: |
-         echo ${{ matrix.region}
+         echo ${{ matrix.region}}
          echo ${{ matrix.currentEnvName}}
          echo ${{ matrix.s3Bucket}}
          echo ${{ matrix.fileName}}
