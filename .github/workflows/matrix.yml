@@ -14,13 +14,13 @@ jobs:
           - { region: us-east-1, currentEnvName: devl , lambda: edl-file-ingest-completion-lambda, s3Bucket: jd-us01-commoninformationservices-devl-system, fileName: infrastructure/cloudformation_templates/api-stack.j2, stackName: edl-files-loader-app }
  
     steps:
-    - name: Deploy and Test - ${{  matrix.config.currentEnvName }} - ${{ matrix.config.stackName }}"
+    - name: Deploy and Test - ${{  matrix.currentEnvName }} - ${{ matrix.stackName }}"
       run: |
-         echo ${{ matrix.config.region}}
-         echo ${{ matrix.config.currentEnvName}}
-         echo ${{ matrix.config.s3Bucket}}
-         echo ${{ matrix.config.fileName}}
-         echo ${{ matrix.config.stackName}}
+         echo ${{ matrix.region}}
+         echo ${{ matrix.currentEnvName}}
+         echo ${{ matrix.s3Bucket}}
+         echo ${{ matrix.fileName}}
+         echo ${{ matrix.stackName}}
          
          
     - name: print1
