@@ -24,6 +24,6 @@ jobs:
          
          
     - name: print1
-      if: contains(${{ matrix.lambda }}, 'lambda')
+      if: contains('Hello world', 'sure')
       run: |
          echo ${{ matrix.lambda }}
