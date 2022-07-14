@@ -15,7 +15,12 @@ jobs:
           currentEnvName: devl
           s3Bucket: jd-us01-commoninformationservices-devl-system
           fileName: infrastructure/cloudformation_templates/infrastructure-stack.j2
-          
+        - stackName: edl-files-loader-app
+          region: us-east-1
+          currentEnvName: devl
+          s3Bucket: jd-us01-commoninformationservices-devl-system
+          fileName: infrastructure/cloudformation_templates/application-stack.j2
+          lambda: lambda:edl-delta-request-handler-lambda
     steps:
     - name: Deploy and Test - ${{  matrix.currentEnvName }} - ${{ matrix.stackName }}"
       run: |
@@ -24,4 +29,7 @@ jobs:
          echo ${{ matrix.s3Bucket}}
          echo ${{ matrix.fileName}}
          echo ${{ matrix.stackName}}
+    - name: print1
+      run: |
+         echo ${{ matrix.lambda}}    
 
