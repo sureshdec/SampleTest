@@ -16,11 +16,11 @@ jobs:
     steps:
     - name: Deploy and Test - ${{  matrix.config.currentEnvName }} - ${{ matrix.config.stackName }}"
       run: |
-         echo ${{ matrix.region}}
-         echo ${{ matrix.currentEnvName}}
-         echo ${{ matrix.s3Bucket}}
-         echo ${{ matrix.fileName}}
-         echo ${{ matrix.stackName}}
+         echo ${{ matrix.config.region}}
+         echo ${{ matrix.config.currentEnvName}}
+         echo ${{ matrix.config.s3Bucket}}
+         echo ${{ matrix.config.fileName}}
+         echo ${{ matrix.config.stackName}}
          
          
     - name: print1
