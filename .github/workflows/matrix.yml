@@ -10,8 +10,8 @@ jobs:
       max-parallel: 1
       matrix:
         include: 
-          - { region: us-east-1, currentEnvName: devl , lambda: edl-file-ingest-completion-lambda, s3Bucket: jd-us01-commoninformationservices-devl-system, fileName: infrastructure/cloudformation_templates/edl-entitlement-key-manager.json, stackName: edl-entitlement-key-manager }
-          - { region: us-east-1, currentEnvName: devl , lambda: edl-file-ingest-request-lambda, s3-bucket: jd-us01-commoninformationservices-devl-system, fileName: infrastructure/cloudformation_templates/edl-entitlement-key-manager-devl.json, stackName: edl-entitlement-key-manager }
+          - { region: us-east-1, currentEnvName: devl , lambda: edl-file-ingest-completion-lambda, s3Bucket: jd-us01-commoninformationservices-devl-system, fileName: infrastructure/cloudformation_templates/edl-entitlement-key-manager-devl.json, stackName: edl-entitlement-key-manager }
+          - { region: us-east-1, currentEnvName: devl , lambda: edl-file-ingest-request-lambda, s3Bucket: jd-us01-commoninformationservices-devl-system, fileName: infrastructure/cloudformation_templates/edl-entitlement-key-manager-devl1.json, stackName: edl-entitlement-key-manager }
     steps:
     - name: print
       run: |
