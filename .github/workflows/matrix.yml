@@ -15,13 +15,13 @@ jobs:
              - edl-delta-request-handler-lambda
              - edl-file-ingest-completion-lambda
     steps:
-    - name: Deploy and Test - ${{  matrix.currentEnvName }} - ${{ matrix.stackName }}"
+    - name: Deploy and Test - ${{  matrix.config }} - ${{ matrix.config }}"
       run: |
-         echo ${{ matrix.config.region}}
-         echo ${{ matrix.config.currentEnvName}}
-         echo ${{ matrix.config.s3Bucket}}
-         echo ${{ matrix.config.fileName}}
-         echo ${{ matrix.config.stackName}}
+         echo ${{ matrix.region}}
+         echo ${{ matrix.currentEnvName}}
+         echo ${{ matrix.s3Bucket}}
+         echo ${{ matrix.fileName}}
+         echo ${{ matrix.stackName}}
          
          
     - name: print1
