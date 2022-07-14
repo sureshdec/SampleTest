@@ -15,8 +15,8 @@ jobs:
     steps:
     - name: print
       run: |
-         echo ${{ matrix.us-east-1}}
-         echo ${{ matrix.devl}}
+         echo ${{ matrix.region}
+         echo ${{ matrix.currentEnvName}}
          echo ${{ matrix.s3Bucket}}
          echo ${{ matrix.fileName}}
          echo ${{ matrix.stackName}}
