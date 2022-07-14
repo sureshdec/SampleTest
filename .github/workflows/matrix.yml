@@ -11,31 +11,17 @@ jobs:
       matrix:
        stackName: [edl-files-loader-infra,edl-files-loader-app]    
        lambda: [ edl-delta-request-handler-lambda, edl-file-ingest-completion-lambda ]
-       include: 
-       - stackName: edl-files-loader-infra
-         region: us-east-1 
-         currentEnvName: devl
-         s3Bucket: jd-us01-commoninformationservices-devl-system, 
-         fileName: infrastructure/cloudformation_templates/infrastructure-stack.j2
-       - stackName: edl-files-loader-app
-         region: us-east-1 
-         currentEnvName: devl
-         s3Bucket: jd-us01-commoninformationservices-devl-system, 
-         fileName: infrastructure/cloudformation_templates/api-stack.j2
        exclude: 
-       - stackName: edl-files-loader-infra
+       - stackName: edl-files-loader-app
          lambda: edl-delta-request-handler-lambda
-       - stackName: edl-files-loader-infra
+       - stackName: edl-files-loader-app
          lambda: edl-file-ingest-completion-lambda 
        
         
     steps:
-    - name: Deploy and Test - ${{  matrix.config.currentEnvName }} - ${{ matrix.config.stackName }}"
+    - name: Deploy and Test - ${{ matrix.config.stackName }}"
       run: |
-         echo ${{ matrix.config.region}}
-         echo ${{ matrix.config.currentEnvName}}
-         echo ${{ matrix.config.s3Bucket}}
-         echo ${{ matrix.config.fileName}}
+
          echo ${{ matrix.config.stackName}}
          
          
