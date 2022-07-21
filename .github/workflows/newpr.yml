@@ -1,15 +1,23 @@
 name: test pull request
+#sureesh
 on:
   push:
     branches: [ '*' ]
   pull_request:
     branches: [ master ]
+
   workflow_dispatch:
     inputs:
       environment:
         description: 'devl'
         required: true
         default: 'devl'
+env:
+ assignmentGroup: 'AE EDL Catalog Support'
+ assignedTo: '${{github.event.pusher.name}}'
+ changeDescription: 'See Latest Commit https://github.deere.com/${{github.repository}}/commit/'
+ configurationItem: 'aws-ae-databricks-prod.edl-databricks-sql-logs-job'
+
 jobs:
  BuildAndTest:
    runs-on: ubuntu-latest 
@@ -18,6 +26,9 @@ jobs:
     - name: Build Deployment
       run: |
         echo BuildTest
+    - run: |
+        echo ${{ github.event.head_commit }}
+     
  DevDeploy:
    runs-on: ubuntu-latest 
    if: ${{ (github.event.ref == 'refs/heads/master' || github.event.inputs.environment == 'devl') }}
@@ -27,6 +38,7 @@ jobs:
     - name: Build Deployment
       run: |
         echo Devl Deployment 
+        echo ${{ github.event.pusher.name }}
  ProdDeploy:
     if: ${{ github.event.ref == 'refs/heads/master' }}
     runs-on: ubuntu-latest 
